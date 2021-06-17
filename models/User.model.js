@@ -16,6 +16,15 @@ const UserSchema = new Schema({
     required: true,
     default: "USER",
   },
+  address: {
+    street: { type: String, required: true, trim: true },
+    neighbourhood: { type: String, required: true, trim: true },
+    city: { type: String, required: true, trim: true },
+    postCode: { type: String, required: true, trim: true },
+    stateOrProvince: { type: String, required: true, trim: true },
+    country: { type: String, required: true, trim: true },
+  },
+  transactions: [{ type: Schema.Types.ObjectId, ref: "Transaction" }],
 });
 
 const UserModel = model("User", UserSchema);
