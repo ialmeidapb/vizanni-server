@@ -12,7 +12,12 @@ const TransactionSchema = mongoose.Schema({
       { _id: false }
     ),
   ],
-  timestamp: { type: Date, default: Date.now }
+  timestamp: { type: Date, default: Date.now },
+  status: {
+    type: String,
+    enum: ["Payment pending", "In Transit", "Delivered", "Cancelled"],
+    default: "Payment pending"
+  }
 });
 
 module.exports = mongoose.model("Transaction", TransactionSchema);
