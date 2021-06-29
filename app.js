@@ -15,3 +15,17 @@ app.use("/", userRouter);
 app.listen(Number(process.env.PORT), () =>
   console.log(`Server up and running at port ${process.env.PORT}`)
 );
+
+// Importa e configura nossas rotas
+const userRouter = require("./routes/user.routes");
+
+app.use("/", userRouter);
+
+const productRouter = require("./routes/product.routes");
+app.use("/", productRouter);
+
+const transactionRouter = require("./routes/transaction.routes");
+app.use("/", transactionRouter);
+
+// Inicia o servidor para escutar requisições HTTP na porta 4000
+app.listen(process.env.PORT, () => console.log(`Server up and running at port ${process.env.PORT}`)
